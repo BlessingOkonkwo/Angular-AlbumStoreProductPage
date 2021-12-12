@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class ProductService {
@@ -10,6 +11,6 @@ export class ProductService {
   private _albumUrl: string = '../assets/album.json';
 
   getAlbum(id: number) {
-    return this._http.get(this._albumUrl) => Response.json();
+    return this._http.get(this._albumUrl).map((response) => response.json());
   }
 }
